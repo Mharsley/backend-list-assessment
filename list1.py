@@ -25,14 +25,12 @@
 
 
 def match_ends(words):
-      amt = 0
+    amt = 0
+    for word in words:
+        if len(word) > 1 and word[0] == word[-1]:
+            amt += 1
 
-
-for word in words:
-    if len(word) > 1 and word[0] == word[-1]:
-      amt += 1
-
-return amt
+    return amt
 
 
 # B. front_x
@@ -43,16 +41,16 @@ return amt
 # Hint: this can be done by making 2 lists and sorting each of them
 # before combining them.
 def front_x(words):
-      xlist = []
-      alist = []
+    xlist = []
+    alist = []
 
-for word in words:
-    if word.startswith('x'):
-      xlist.append(word)
-    else:
-      alist.append(word)
+    for word in words:
+        if word.startswith('x'):
+            xlist.append(word)
+        else:
+            alist.append(word)
 
-return sorted(xlist) + sorted(alist)
+    return sorted(xlist) + sorted(alist)
 
 # C. sort_last
 # Given a list of non-empty tuples, return a list sorted in increasing
@@ -60,19 +58,23 @@ return sorted(xlist) + sorted(alist)
 # e.g. [(1, 7), (1, 3), (3, 4, 5), (2, 2)] yields
 # [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
 # Hint: use a custom key= function to extract the last element form each tuple.
-def last(t): return t[-1]
+
+
+def last(t): 
+    return t[-1]
+
 
 def sort_last(tuples):
-  return sorted(tuples, key=last)
+    return sorted(tuples, key=last)
 
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
 def test(got, expected):
-      if got == expected:
-          prefix = ' OK '
-      else:
-          prefix = '  X '
-print('{} got: {} expected: {}'.format(prefix, repr(got), repr(expected)))
+    if got == expected:
+        prefix = ' OK '
+    else:
+        prefix = '  X '
+    print('{} got: {} expected: {}'.format(prefix, repr(got), repr(expected)))
 
 
 # Calls the above functions with interesting inputs.
